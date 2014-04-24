@@ -73,7 +73,7 @@ apdsh() {
       if [ $type == 'db' ]; then
         type='ded\|fsdb\|fsdbmesh\|dbmaster'
       fi
-      pdsh -w `aht @$sitename --show=$filter | awk {'print $1'} | grep $type | sed -e 's/^[ \t]*//' | tr '\n' ','` $command
+      pdsh -w `aht @$sitename --show=$filter | awk {'print $1'} | grep -e ^$type | sed -e 's/^[ \t]*//' | tr '\n' ','` $command
     fi
 
   shift $((OPTIND-1))
